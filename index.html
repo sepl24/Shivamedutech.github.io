@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shivam Edutech Pvt. Ltd. — MBBS Abroad Consultancy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --blue-deep:  #0A1F44;
+    --blue-mid:   #1A4BAF;
+    --blue-bright:#2F7BFF;
+    --blue-light: #E8F0FF;
+    --blue-pale:  #F4F7FF;
+    --gold:       #F0B429;
+    --white:      #FFFFFF;
+    --gray:       #6B7A99;
+    --ink:        #0D1B3E;
+  }
+
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Outfit', sans-serif; background: var(--white); color: var(--ink); overflow-x: hidden; }
+
+  /* ── TOPBAR ── */
+  .topbar {
+    background: var(--blue-deep);
+    color: rgba(255,255,255,0.75);
+    font-size: 0.8rem;
+    padding: 0.5rem 3rem;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .topbar a { color: var(--gold); text-decoration: none; }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky; top: 0;
+    background: var(--white);
+    padding: 1rem 3rem;
+    display: flex; justify-content: space-between; align-items: center;
+    z-index: 100;
+    box-shadow: 0 2px 20px rgba(10,31,68,0.08);
+  }
+  .logo-wrap { display: flex; align-items: center; gap: 0.8rem; }
+  .logo-icon {
+    width: 44px; height: 44px;
+    background: linear-gradient(135deg, var(--blue-mid), var(--blue-bright));
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; color: white;
+    font-weight: 900;
+  }
+  .logo-text { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--blue-deep); line-height: 1.2; }
+  .logo-sub { font-size: 0.65rem; color: var(--gray); font-weight: 400; letter-spacing: 1px; text-transform: uppercase; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { text-decoration: none; color: var(--ink); font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--blue-bright); }
+  .nav-cta {
+    background: var(--blue-bright); color: white;
+    padding: 0.6rem 1.5rem; border-radius: 8px;
+    text-decoration: none; font-size: 0.9rem; font-weight: 600;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .nav-cta:hover { background: var(--blue-mid); transform: translateY(-1px); }
+
+  /* ── HERO ── */
+  #hero {
+    background: linear-gradient(135deg, var(--blue-deep) 0%, var(--blue-mid) 60%, #1a6be0 100%);
+    color: white;
+    padding: 6rem 3rem 5rem;
+    position: relative;
+    overflow: hidden;
+    min-height: 90vh;
+    display: flex; align-items: center;
+  }
+  .hero-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 4rem; align-items: center; max-width: 1200px; margin: 0 auto; width: 100%; position: relative; z-index: 2; }
+
+  /* background decoration */
+  .hero-circle {
+    position: absolute; border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.07);
+  }
+  .hc1 { width: 500px; height: 500px; top: -150px; right: -100px; }
+  .hc2 { width: 300px; height: 300px; bottom: -80px; right: 100px; }
+  .hc3 { width: 200px; height: 200px; top: 50px; right: 250px; background: rgba(255,255,255,0.03); }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 0.4rem 1rem; border-radius: 50px;
+    font-size: 0.8rem; font-weight: 500;
+    margin-bottom: 1.5rem;
+    animation: fadeUp 0.7s ease both;
+  }
+  .badge-dot { width: 8px; height: 8px; background: var(--gold); border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.6;transform:scale(1.3)} }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 900; line-height: 1.1;
+    margin-bottom: 1.5rem;
+    animation: fadeUp 0.8s ease 0.1s both;
+  }
+  .hero-title span { color: var(--gold); }
+
+  .hero-desc {
+    font-size: 1.05rem; font-weight: 300; line-height: 1.8;
+    color: rgba(255,255,255,0.8); max-width: 480px;
+    margin-bottom: 2.5rem;
+    animation: fadeUp 0.8s ease 0.2s both;
+  }
+
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; animation: fadeUp 0.8s ease 0.3s both; }
+  .btn-gold {
+    background: var(--gold); color: var(--blue-deep);
+    padding: 0.9rem 2rem; border-radius: 8px;
+    font-weight: 700; font-size: 0.95rem;
+    text-decoration: none; transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .btn-gold:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(240,180,41,0.4); }
+  .btn-outline {
+    border: 2px solid rgba(255,255,255,0.4); color: white;
+    padding: 0.9rem 2rem; border-radius: 8px;
+    font-weight: 500; font-size: 0.95rem;
+    text-decoration: none; transition: background 0.2s;
+  }
+  .btn-outline:hover { background: rgba(255,255,255,0.1); }
+
+  /* hero right card */
+  .hero-card {
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 24px; padding: 2.5rem;
+    animation: fadeUp 0.9s ease 0.4s both;
+  }
+  .hero-card h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem; color: var(--gold); }
+  .country-list { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; }
+  .country-list li {
+    display: flex; align-items: center; gap: 0.8rem;
+    font-size: 0.95rem; color: rgba(255,255,255,0.85);
+    padding: 0.6rem 1rem;
+    background: rgba(255,255,255,0.06);
+    border-radius: 10px;
+  }
+  .country-list li span:first-child { font-size: 1.3rem; }
+
+  @keyframes fadeUp { from { opacity:0; transform:translateY(25px); } to { opacity:1; transform:translateY(0); } }
+
+  /* ── STATS ── */
+  .stats-bar {
+    background: var(--blue-pale);
+    padding: 2.5rem 3rem;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 2rem; text-align: center;
+    border-bottom: 1px solid var(--blue-light);
+  }
+  .stat-item {}
+  .stat-num { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 900; color: var(--blue-mid); }
+  .stat-label { font-size: 0.82rem; color: var(--gray); margin-top: 0.3rem; font-weight: 500; }
+
+  /* ── SECTION BASE ── */
+  section { padding: 5rem 3rem; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  .sec-label { font-size: 0.72rem; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--blue-bright); margin-bottom: 0.6rem; }
+  .sec-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 700; color: var(--blue-deep); margin-bottom: 1rem; line-height: 1.2; }
+  .sec-desc { color: var(--gray); font-size: 1rem; line-height: 1.7; max-width: 560px; }
+
+  /* ── WHY US ── */
+  #why { background: var(--white); }
+  .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+  .why-card {
+    background: var(--blue-pale);
+    border-radius: 20px; padding: 2rem;
+    border: 1px solid var(--blue-light);
+    transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+  }
+  .why-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(47,123,255,0.12); background: white; }
+  .why-icon { font-size: 2.2rem; margin-bottom: 1rem; }
+  .why-title { font-weight: 700; font-size: 1.05rem; color: var(--blue-deep); margin-bottom: 0.5rem; }
+  .why-desc { font-size: 0.88rem; color: var(--gray); line-height: 1.6; }
+
+  /* ── COUNTRIES ── */
+  #countries { background: var(--blue-pale); }
+  .countries-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1rem; margin-top: 3rem; }
+  .country-card {
+    background: white; border-radius: 16px; padding: 1.5rem;
+    text-align: center; border: 1px solid var(--blue-light);
+    transition: transform 0.25s, box-shadow 0.25s;
+    cursor: default;
+  }
+  .country-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(47,123,255,0.1); }
+  .country-flag { font-size: 2.5rem; margin-bottom: 0.6rem; }
+  .country-name { font-weight: 600; font-size: 0.9rem; color: var(--blue-deep); }
+  .country-info { font-size: 0.75rem; color: var(--gray); margin-top: 0.2rem; }
+
+  /* ── PROCESS ── */
+  #process { background: var(--white); }
+  .process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 3rem; position: relative; }
+  .process-steps::before {
+    content: ''; position: absolute;
+    top: 2rem; left: 12%; right: 12%; height: 2px;
+    background: linear-gradient(90deg, var(--blue-bright), var(--blue-mid));
+    z-index: 0;
+  }
+  .step { text-align: center; position: relative; z-index: 1; padding: 0 1rem; }
+  .step-num {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--blue-mid), var(--blue-bright));
+    color: white; font-weight: 700; font-size: 1.1rem;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1.2rem;
+    box-shadow: 0 8px 20px rgba(47,123,255,0.3);
+  }
+  .step-title { font-weight: 700; font-size: 0.95rem; color: var(--blue-deep); margin-bottom: 0.4rem; }
+  .step-desc { font-size: 0.82rem; color: var(--gray); line-height: 1.5; }
+
+  /* ── CONTACT ── */
+  #contact { background: var(--blue-deep); color: white; }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  #contact .sec-title { color: white; }
+  #contact .sec-desc { color: rgba(255,255,255,0.65); }
+  .contact-items { display: flex; flex-direction: column; gap: 1.2rem; margin-top: 2rem; }
+  .contact-item {
+    display: flex; align-items: center; gap: 1rem;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 14px; padding: 1.1rem 1.5rem;
+    text-decoration: none; color: white;
+    transition: background 0.2s;
+  }
+  .contact-item:hover { background: rgba(255,255,255,0.12); }
+  .contact-icon { font-size: 1.4rem; }
+  .contact-label { font-size: 0.72rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 1px; }
+  .contact-val { font-weight: 600; font-size: 0.95rem; }
+
+  .cta-box {
+    background: linear-gradient(135deg, var(--blue-bright), #1a6be0);
+    border-radius: 24px; padding: 2.5rem;
+    text-align: center;
+  }
+  .cta-box h3 { font-family: 'Playfair Display', serif; font-size: 1.7rem; font-weight: 700; margin-bottom: 0.8rem; }
+  .cta-box p { color: rgba(255,255,255,0.75); font-size: 0.9rem; margin-bottom: 2rem; line-height: 1.6; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #060f22;
+    color: rgba(255,255,255,0.4);
+    text-align: center;
+    padding: 1.5rem 3rem;
+    font-size: 0.82rem;
+  }
+  footer a { color: var(--gold); text-decoration: none; }
+
+  /* ── REVEAL ── */
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 900px) {
+    .hero-grid, .contact-grid { grid-template-columns: 1fr; }
+    .why-grid { grid-template-columns: 1fr 1fr; }
+    .process-steps { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .process-steps::before { display: none; }
+    .stats-bar { grid-template-columns: 1fr 1fr; }
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    section { padding: 4rem 1.5rem; }
+    .topbar { padding: 0.5rem 1.5rem; font-size: 0.72rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <span>📍 Jodhpur, Rajasthan, India</span>
+  <span>📞 <a href="tel:7073400555">7073400555</a> &nbsp;|&nbsp; 🌐 <a href="http://www.shivamedutech.com">shivamedutech.com</a></span>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="logo-wrap">
+    <div class="logo-icon">SE</div>
+    <div>
+      <div class="logo-text">Shivam Edutech</div>
+      <div class="logo-sub">Pvt. Ltd.</div>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#countries">Countries</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="tel:7073400555" class="nav-cta">📞 Free Counselling</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-circle hc1"></div>
+  <div class="hero-circle hc2"></div>
+  <div class="hero-circle hc3"></div>
+  <div class="hero-grid">
+    <div>
+      <div class="hero-badge"><span class="badge-dot"></span> Trusted MBBS Abroad Consultancy</div>
+      <h1 class="hero-title">
+        Your Dream of<br>
+        <span>MBBS Abroad</span><br>
+        Starts Here
+      </h1>
+      <p class="hero-desc">
+        Shivam Edutech Pvt. Ltd. helps aspiring medical students pursue MBBS at top universities abroad — at minimal cost, with full support and guidance.
+      </p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-gold">Get Free Counselling →</a>
+        <a href="#countries" class="btn-outline">Explore Countries</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>🎓 Top Destinations We Offer</h3>
+      <ul class="country-list">
+        <li><span>🇷🇺</span> Russia — Affordable & Recognized</li>
+        <li><span>🇺🇿</span> Uzbekistan — Low Cost, High Quality</li>
+        <li><span>🇰🇿</span> Kazakhstan — WHO Listed Universities</li>
+        <li><span>🇧🇩</span> Bangladesh — NMC Approved</li>
+        <li><span>🇵🇭</span> Philippines — English Medium</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat-item reveal">
+    <div class="stat-num">500+</div>
+    <div class="stat-label">Students Placed</div>
+  </div>
+  <div class="stat-item reveal">
+    <div class="stat-num">10+</div>
+    <div class="stat-label">Countries</div>
+  </div>
+  <div class="stat-item reveal">
+    <div class="stat-num">100%</div>
+    <div class="stat-label">Visa Success</div>
+  </div>
+  <div class="stat-item reveal">
+    <div class="stat-num">5★</div>
+    <div class="stat-label">Student Trust</div>
+  </div>
+</div>
+
+<!-- WHY US -->
+<section id="why">
+  <div class="container">
+    <p class="sec-label reveal">Why Choose Us</p>
+    <h2 class="sec-title reveal">Hamare saath MBBS kyun kare?</h2>
+    <p class="sec-desc reveal">Hum sirf admission nahi dete — hum puri journey mein aapke saath hote hain, ghar se leke hostel tak.</p>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <div class="why-icon">💰</div>
+        <div class="why-title">Minimal Charges</div>
+        <div class="why-desc">India ke private medical colleges ke mukable bahut kam fees mein top universities mein admission dilate hain.</div>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon">🛡️</div>
+        <div class="why-title">Fully Facilitated</div>
+        <div class="why-desc">Admission se lekar visa, travel, hostel aur university registration — sab kuch hum handle karte hain.</div>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon">🏥</div>
+        <div class="why-title">NMC / WHO Approved</div>
+        <div class="why-desc">Sirf NMC aur WHO approved universities mein admission — India mein practice karne ke liye valid degree.</div>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon">🌐</div>
+        <div class="why-title">English Medium</div>
+        <div class="why-desc">Sabhi courses English mein hote hain, alag bhasha seekhne ki zaroorat nahi.</div>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon">👨‍💼</div>
+        <div class="why-title">Expert Counselling</div>
+        <div class="why-desc">Dharmendra Motda aur unki team personally har student ki situation ke hisaab se guide karti hai.</div>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon">📞</div>
+        <div class="why-title">24/7 Support</div>
+        <div class="why-desc">Koi bhi sawaal ho — admission ke baad bhi hum hamesha available hain aapke liye.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COUNTRIES -->
+<section id="countries">
+  <div class="container">
+    <p class="sec-label reveal">Destinations</p>
+    <h2 class="sec-title reveal">MBBS Abroad — Top Countries</h2>
+    <p class="sec-desc reveal">In deshon ki top universities mein hum direct admission dilate hain — NMC approved, affordable fees.</p>
+    <div class="countries-grid">
+      <div class="country-card reveal"><div class="country-flag">🇷🇺</div><div class="country-name">Russia</div><div class="country-info">From ₹20L/year</div></div>
+      <div class="country-card reveal"><div class="country-flag">🇺🇿</div><div class="country-name">Uzbekistan</div><div class="country-info">From ₹15L/year</div></div>
+      <div class="country-card reveal"><div class="country-flag">🇰🇿</div><div class="country-name">Kazakhstan</div><div class="country-info">WHO Listed</div></div>
+      <div class="country-card reveal"><div class="country-flag">🇧🇩</div><div class="country-name">Bangladesh</div><div class="country-info">NMC Approved</div></div>
+      <div class="country-card reveal"><div class="country-flag">🇵🇭</div><div class="country-name">Philippines</div><div class="country-info">English Medium</div></div>
+      <div class="country-card reveal"><div class="country-flag">🇨🇳</div><div class="country-name">China</div><div class="country-info">Top Ranked</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="container">
+    <p class="sec-label reveal">How It Works</p>
+    <h2 class="sec-title reveal">4 Simple Steps to MBBS Abroad</h2>
+    <div class="process-steps">
+      <div class="step reveal">
+        <div class="step-num">1</div>
+        <div class="step-title">Free Counselling</div>
+        <div class="step-desc">Call ya visit karein — apni eligibility aur best country choose karein</div>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">2</div>
+        <div class="step-title">University Selection</div>
+        <div class="step-desc">Budget aur preference ke hisaab se best university select karein</div>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">3</div>
+        <div class="step-title">Admission & Visa</div>
+        <div class="step-desc">Hum saare documents, admission aur visa process handle karte hain</div>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">4</div>
+        <div class="step-title">Fly & Study!</div>
+        <div class="step-desc">Airport pickup se lekar hostel settle hone tak — hum saath hain</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div>
+        <p class="sec-label reveal" style="color:#7eb3ff">Contact Us</p>
+        <h2 class="sec-title reveal">Aaj hi baat karein!</h2>
+        <p class="sec-desc reveal">MBBS abroad ke baare mein koi bhi sawaal ho — free counselling ke liye abhi contact karein.</p>
+        <div class="contact-items reveal">
+          <a class="contact-item" href="tel:7073400555">
+            <span class="contact-icon">📞</span>
+            <div><div class="contact-label">Phone / WhatsApp</div><div class="contact-val">7073400555</div></div>
+          </a>
+          <a class="contact-item" href="http://www.shivamedutech.com" target="_blank">
+            <span class="contact-icon">🌐</span>
+            <div><div class="contact-label">Website</div><div class="contact-val">www.shivamedutech.com</div></div>
+          </a>
+          <a class="contact-item" href="https://instagram.com/shivam.edutech" target="_blank">
+            <span class="contact-icon">📸</span>
+            <div><div class="contact-label">Instagram</div><div class="contact-val">@shivam.edutech</div></div>
+          </a>
+          <div class="contact-item">
+            <span class="contact-icon">📍</span>
+            <div><div class="contact-label">Location</div><div class="contact-val">Jodhpur, Rajasthan</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="cta-box reveal">
+        <h3>MBBS ka Sapna<br>Poora Karein! 🎓</h3>
+        <p>
+          "If you are thinking of MBBS,<br>you must visit <strong>Shivam Education Point</strong>"<br><br>
+          — Dharmendra Motda, Founder
+        </p>
+        <a href="tel:7073400555" class="btn-gold" style="display:inline-block;">📞 Call Now — Free Counselling</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  © 2026 Shivam Edutech Pvt. Ltd. · Jodhpur, Rajasthan &nbsp;|&nbsp;
+  <a href="http://www.shivamedutech.com">shivamedutech.com</a> &nbsp;|&nbsp;
+  Made with ❤️
+</footer>
+
+<script>
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 70);
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
